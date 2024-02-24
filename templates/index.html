@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
+    </head>
+    <body>
+        <nav>
+            <label class="logo">COVID VACCINATION BOOKING</label>
+        </nav>
+        <div class="main">
+            <div class="message">
+                {{msg}}
+            </div>
+            <div class="container">
+                <h1>Login</h1>
+                <form action="user_login" method="POST" autocomplete="off">
+                <div class="inputs">
+                <div class="input-group">
+                    <input type="text" placeholder="Email" name="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password" name="pwd" id="pwd" required>
+                </div>
+                <div class="input-group">
+                    <select name="type" id="type">
+                        <option value="None" selected>Login As</option>
+                        <option value="admin">ADMIN</option>
+                        <option value="user">USER</option>
+                    </select>
+                </div>
+                </div>
+                <button type="submit" name="submit" value="submit">Login</button>
+                </form>
+                <div class="links">
+                    <a href="{{url_for('register_user')}}">User Register</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>                   

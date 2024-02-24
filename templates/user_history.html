@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/user_history.css')}}">
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa-solid fa-bars"></i>
+        </label>
+        <label class="logo">COVID VACCINATION BOOKING</label>
+        <ul>
+            <li><a href="{{url_for('after_login')}}">HOME</a></li>
+            <li><a class="active" href="{{url_for('history')}}">HISTORY</a></li>
+            <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="message">
+            {{msg}}
+        </div>
+        <table class="styled-table"> 
+            <caption>Your Bookings</caption>
+            <tbody> 
+                <tr> 
+                    <th>NAME</th> 
+                    <th>PHONE</th>
+                    <th>CENTER</th>
+                    <th>PLACE</th>  
+                    <th>DATE</th>             
+                </tr>
+                {% for center in details %}
+                <tr>
+                    <td>{{ center[1].strip() }}</td>
+                    <td>{{ center[2].strip() }}</td>
+                    <td>{{ center[3].strip() }}</td>
+                    <td>{{ center[4].strip() }}</td>
+                    <td>{{ center[5].strip() }}</td>
+                </tr>
+                {% endfor %}
+            </tbody> 
+        </table> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/add_centers.css')}}">
+    </head>
+    <body>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fa-solid fa-bars"></i>
+            </label>
+            <label class="logo">COVID VACCINATION BOOKING</label>
+            <ul>
+                <li><a href="{{url_for('after_admin_login')}}">HOME</a></li>
+                <li><a class="active" href="{{url_for('add_centers')}}">ADD</a></li>
+                <li><a href="{{url_for('get_details')}}">DETAILS</a></li>
+                <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="message">
+                {{msg}}
+            </div>
+            <center><h1>ADD CENTER DETAILS</h1></center>
+            <form  action="add" method="POST" autocomplete="off">
+                <div class="inputs">
+                    <div class="input-group">
+                       <span style="margin-left: 195px;">NAME:</span><input type="text" placeholder="name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 190px;">PLACE:</span><input type="text" placeholder="place" name="place" required>
+                    </div>
+                    <div class="input-group">
+                        <span style="margin-left: 200px;">TIME:</span><input type="text" placeholder="time" name="time" required>
+                    </div>
+                </div>
+                <input type="submit" name="submit" value="ADD" style="background-color: #076593;color: #fff;padding: 10px 20px;
+                border: none;
+                margin-left: 300px;
+                border-radius: 5px;
+                cursor: pointer;">
+            </form>
+        </div>
+        
+    </body>
+</html>

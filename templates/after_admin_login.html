@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/after_login.css')}}">
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa-solid fa-bars"></i>
+        </label>
+        <label class="logo">COVID VACCINATION BOOKING</label>
+        <ul>
+            <li><a class="active" href="{{url_for('after_admin_login')}}">HOME</a></li>
+            <li><a href="{{url_for('add_centers')}}">ADD</a></li>
+            <li><a href="{{url_for('get_details')}}">DETAILS</a></li>
+            <li><a href="{{url_for('logout')}}">LOGOUT</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="message">
+            {{msg}}
+        </div>
+        <form action="after_admin_login" method="POST" autocomplete="off">
+            <input type="text" id="search_query" name="search_query" placeholder="Enter Your Center">
+            <input type="submit" value="SEARCH">
+        </form>
+        <table class="styled-table"> 
+            <caption>COVID VACCINATION CENTERS</caption>
+            <tbody> 
+                <tr> 
+                    <th>ID</th>
+                    <th>NAME</th> 
+                    <th>PLACE</th>
+                    <th>TIME</th>
+                    <th>ACTION</th>               
+                </tr>
+                {% for center in centers %}
+                <tr>
+                    <form action="delete_center" method="POST">
+                    <input type="hidden" name="id" value="{{ center['id'] }}">
+                    <input type="hidden" name="name" value="{{ center['name'].strip() }}">
+                    <input type="hidden" name="place" value="{{ center['place'].strip() }}">
+                    <td>{{ center['id'] }}</td>
+                    <td>{{ center['name'].strip() }}</td>
+                    <td>{{ center['place'].strip() }}</td>
+                    <td>{{ center['time'].strip() }}</td>
+                    <td><button type="submit">DELETE</button></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody> 
+        </table> 
+    </div>
+</body>
+</html>

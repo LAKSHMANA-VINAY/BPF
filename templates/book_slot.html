@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/book_slot.css')}}">
+    <script>
+        function validate() {
+    var Name = document.getElementById("name").value;
+    var phoneNumber = document.getElementById("phone").value;
+
+    var rName=/^[A-Za-z ]+$/;
+    var rphoneNumber=/^[9876]\d{9}$/;
+
+    if (rName.test(Name) && rphoneNumber.test(phoneNumber)){
+        return true;
+    }
+    else{
+        alert("please fill details carefully:name - must contain only aplhabets and spaces,phone must start with (9,8,7,6) and of length 10  digits only");
+        return false;
+    }
+
+}
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="message">
+            {{msg}}
+        </div>
+        <h2>Book a Slot For Today</h2>
+        <h3>Total Available Slots {{details[3]}}</h3>
+        <button class="back-button"><a href="{{ url_for('after_login')}}" style="text-decoration:none ;color: white;">Back</a></button>
+        <form onsubmit="return validate()" action="book" method="POST" autocomplete="off">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="center">Center Name</label>
+            <input type="text" id="center" name="center" value="{{details[0]}}" placeholder="{{details[0]}}" onfocus="return false">
+
+            <label for="place">Place Name</label>
+            <input type="text" id="place" name="place" value="{{details[1]}}" placeholder="{{details[1]}}" onfocus="return false">
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="{{details[2]}}" value="{{details[2]}}" onfocus="return false">
+
+            <input type="submit" value="Book Slot">
+        </form>
+    </div>
+    <script>
+        document.getElementById('center').addEventListener('keydown', function(event) {
+            event.preventDefault();
+        });
+        document.getElementById('place').addEventListener('keydown', function(event) {
+            event.preventDefault();
+        });
+        document.getElementById('email').addEventListener('keydown', function(event) {
+            event.preventDefault();
+        });
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
