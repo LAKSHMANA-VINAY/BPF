@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#hospitalName{
+    cursor: not-allowed;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+}
+
+#DoctorName{
+    cursor: not-allowed;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+}
+
+#email{
+    cursor: not-allowed;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+select {
+    height: 40px;
+}
+
+input[type="submit"] {
+    background-color: #076593;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #1a95d2;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #076593;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
